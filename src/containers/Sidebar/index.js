@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import MainMenu from "../../components/MainMenu";
 import UserAvatar from "../../components/UserAvatar";
 import style from "./style.css";
-import { toggleSidebar } from "../../actions/sidebar";
+import { toggleSidebar } from "../../actions/sidebar.action";
 
 class SidebarContainer extends Component {
 
