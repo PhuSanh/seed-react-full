@@ -4,8 +4,10 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProductListContainer from './containers/Product/ProductListContainer';
 import routes from './routes';
-import MainMenu from './components/Menu/MainMenu';
-import Sidebar from "./components/Sidebar";
+
+import SidebarContainer from "./containers/Sidebar";
+import HeadbarContainer from "./containers/Headbar";
+import { connect } from "react-redux";
 
 class App extends Component {
 
@@ -29,21 +31,32 @@ class App extends Component {
 	}
 
 	render() {
+		const { sidebar } = this.props;
+
 		return (
 			<Router>
-				<div className="App"> {/* Can use Fragment */}
+				<div className={"App " + (sidebar.isShow ? "fixed-sidebar" : "")}> {/* Can use Fragment */}
 
-					<Sidebar />
+					<HeadbarContainer />
+					<SidebarContainer />
 
 					{/* Content */}
-					<h1>Xin chao</h1>
-					<Switch>
-						{ this.showPageContent(routes) }
-					</Switch>
+					<div id="main-app">
+						<h1>Xin chao</h1>
+						<Switch>
+							{ this.showPageContent(routes) }
+						</Switch>
+					</div>
 				</div>
 			</Router>
 		);
 	}
 }
 
-export default App;
+const mapStateToProps = state => {
+	return {
+		sidebar: state.sidebar
+	}
+}
+
+export default connect(mapStateToProps, null)(App);

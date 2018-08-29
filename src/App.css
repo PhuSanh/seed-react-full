@@ -22,6 +22,29 @@
   font-size: large;
 }
 
+#main-app {
+	margin-top: 40px;
+	padding: 15px;
+	transition: all .5s;
+	background-color: #F9F9F9;
+}
+.App.fixed-sidebar #main-app {
+	margin-left: 200px;
+}
+.App.fixed-sidebar #sidebar {
+	left: 0;
+}
+.clear-both {
+	clear: both;
+}
+.text-muted {
+	color: #636c72 !important;
+}
+a, a:hover, a:focus {
+	text-decoration: none;
+}
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

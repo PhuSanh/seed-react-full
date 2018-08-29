@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 
+import style from "./style.css";
+
 const MenuLink = ({ label, to, activeOnlyWhenExact = false }) => {
     return(
         <Route path={to} exact={activeOnlyWhenExact} children={({match}) => {
@@ -19,7 +21,7 @@ const MenuLink = ({ label, to, activeOnlyWhenExact = false }) => {
 const MainMenu = props => {
 
 	return(
-			<div>
+			<div id="main-menu">
 					<ul>
 							<MenuLink label="Trang chủ" to="/" activeOnlyWhenExact={true} />
 							<MenuLink label="Liên hệ" to="/contact" />

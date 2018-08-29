@@ -1,0 +1,17 @@
+#main-menu ul {
+	padding: 0;
+}
+#main-menu li {
+	list-style-type: none;
+	text-align: left;
+}
+#main-menu li a {
+	color: #fff;
+	font-size: 14px;
+	display: block;
+	padding: 13px 0 13px 25px;
+	transition: all .2s;
+}
+#main-menu li:hover a {
+	background-color: #2F313C;
+}

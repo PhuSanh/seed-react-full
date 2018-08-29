@@ -1,3 +1,3 @@
 export const TEST = 'TEST';
-export const TEST_1 = 'TEST_1';
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const ADD_PRODUCT = 'ADD_PRODUCT';
