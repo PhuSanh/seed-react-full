@@ -6,7 +6,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 
 import style from "./style.css";
 import DigitalClock from "../../components/DigitalClock";
-import { toggleSidebar } from "../../actions/sidebar";
+import { toggleSidebar } from "../../actions/sidebar.action";
 
 class HeadbarContainer extends Component {
 
