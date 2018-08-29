@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProductListContainer from './containers/Product/ProductListContainer';
 import routes from './routes';
 import MainMenu from './components/Menu/MainMenu';
+import Sidebar from "./components/Sidebar";
 
 class App extends Component {
 
@@ -32,8 +33,7 @@ class App extends Component {
 			<Router>
 				<div className="App"> {/* Can use Fragment */}
 
-					{/* Menu */}
-					<MainMenu />
+					<Sidebar />
 
 					{/* Content */}
 					<h1>Xin chao</h1>

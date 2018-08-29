@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Link } from 'react-router-dom';
 
 const MenuLink = ({ label, to, activeOnlyWhenExact = false }) => {
@@ -16,19 +16,17 @@ const MenuLink = ({ label, to, activeOnlyWhenExact = false }) => {
     );
 }
 
-class MainMenu extends Component {
+const MainMenu = props => {
 
-    render() {
-        return(
-            <div>
-                <ul>
-                    <MenuLink label="Trang chủ" to="/" activeOnlyWhenExact={true} />
-                    <MenuLink label="Liên hệ" to="/contact" />
-                </ul>
-                This is product list { this.props.children }
-            </div>
-        );
-    };
+	return(
+			<div>
+					<ul>
+							<MenuLink label="Trang chủ" to="/" activeOnlyWhenExact={true} />
+							<MenuLink label="Liên hệ" to="/contact" />
+					</ul>
+					{/* This is product list { props.children } */}
+			</div>
+	);
 
 }
 
