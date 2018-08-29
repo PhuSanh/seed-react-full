@@ -1,7 +1,7 @@
 import * as Types from './../constants/ActionType';
 
 var initialState = {
-	isShow: false
+	isShow: true
 }; // String, Array, Object,...
 
 const sidebar = (state = initialState, action) => {
