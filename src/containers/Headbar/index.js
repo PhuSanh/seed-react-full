@@ -7,6 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import style from "./style.css";
 import DigitalClock from "../../components/DigitalClock";
 import { toggleSidebar } from "../../actions/sidebar.action";
+import { t } from "../../utils/translate";
 
 class HeadbarContainer extends Component {
 
@@ -25,10 +26,10 @@ class HeadbarContainer extends Component {
 						<MenuIcon />
 					</IconButton>
 					<img className="brand-logo" src="img/logo-vinamilk.png" />
-					<p className="tool-title">Tool quản lý / tracking</p>
+					<p className="tool-title">{ t("management_tracking_tool") }</p>
 				</div>
 				<div className="page-title">
-					Trang quản lý line
+					{ t("management_line") }
 				</div>
 				<div className="digital-clock">
 					<DigitalClock />
