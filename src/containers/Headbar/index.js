@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu"
+import MenuIcon from "@material-ui/icons/Menu";
+import FullscreenIcon from "@material-ui/icons/Fullscreen";
+import screenfull from "screenfull";
 
 import style from "./style.css";
 import DigitalClock from "../../components/DigitalClock";
@@ -13,6 +15,10 @@ class HeadbarContainer extends Component {
 
 	onToggleSidebar = () => {
 		this.props.toggleSidebar();
+	}
+
+	fullScreen = () => {
+		screenfull.toggle();
 	}
 
 	render () {
@@ -34,6 +40,9 @@ class HeadbarContainer extends Component {
 				<div className="digital-clock">
 					<DigitalClock />
 				</div>
+				<IconButton onClick={this.fullScreen} className="icon-fullscreen" color="primary" aria-label="Menu">
+					<FullscreenIcon />
+				</IconButton>
 			</div>
 		)
 	}

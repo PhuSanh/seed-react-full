@@ -18,6 +18,12 @@
 	height: 40px;
 	float: left;
 }
+#headbar .icon-fullscreen {
+	width: 40px;
+	height: 40px;
+	color: #fff;
+	float: right;
+}
 #headbar .brand-logo {
 	height: 40px;
 	float: left;
@@ -39,7 +45,7 @@
 }
 #headbar .digital-clock {
 	position: absolute;
-	right: 10px;
+	right: 50px;
 	top: 50%;
 	transform: translateY(-50%);
 }
