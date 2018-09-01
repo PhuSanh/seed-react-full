@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from 'react-router-dom';
 
 // redux
 import { createStore } from 'redux';
@@ -15,7 +16,9 @@ const store = createStore(
 
 ReactDOM.render(
             <Provider store={ store }>
+							<BrowserRouter>
                 <App />
+							</BrowserRouter>
             </Provider>
             , document.getElementById('root'));
 registerServiceWorker();

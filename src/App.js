@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import ProductListContainer from './containers/Product/ProductListContainer';
 import routes from './routes';
 
 import SidebarContainer from "./containers/Sidebar";
 import HeadbarContainer from "./containers/Headbar";
 import { connect } from "react-redux";
+import LoginPage from './pages/LoginPage';
 
 class App extends Component {
 
@@ -31,10 +32,17 @@ class App extends Component {
 	}
 
 	render() {
-		const { sidebar } = this.props;
+		const { sidebar, auth, location } = this.props;
+		console.log(auth.isLoggedIn);
+		if(!auth.isLoggedIn && location.pathname !== "/login") {
+			return (<Redirect to="/login" />)
+		}
 
 		return (
-			<Router>
+			<Fragment>
+				{ (location.pathname === "/login")
+					?	(<Route path="/login" component={() => <LoginPage />} />)
+					: (	
 				<div className={"App " + (sidebar.isShow ? "fixed-sidebar" : "")}> {/* Can use Fragment */}
 
 					<HeadbarContainer />
@@ -48,15 +56,18 @@ class App extends Component {
 						</Switch>
 					</div>
 				</div>
-			</Router>
+					)
+				}
+			</Fragment>
 		);
 	}
 }
 
 const mapStateToProps = state => {
 	return {
-		sidebar: state.sidebar
+		sidebar: state.sidebar,
+		auth: state.auth
 	}
 }
 
-export default connect(mapStateToProps, null)(App);
+export default withRouter(connect(mapStateToProps, null)(App));
