@@ -15,7 +15,8 @@ class LoginContainer extends Component {
 		super(props);
 		this.state = {
 			username: "",
-			password: ""
+			password: "",
+			loading: false
 		}
 	}
 
@@ -33,21 +34,27 @@ class LoginContainer extends Component {
 		});
 	}
 
-	onSubmitLogin = async () => {
+	onSubmitLogin = async (event) => {
+		event.preventDefault();
+		this.setState({
+			loading: true
+		});
 		const user = pick(this.state, ["username", "password"]);
-		await this.props.login(user);
-		this.props.history.push("/");
+		this.props.login(user);
+		// this.props.history.push("/");
 	}
 
 	render () {
 
 		const { sidebar } = this.props;
+		const { loading } = this.state;
 
 		return (
 			<div id="login">
 				<LoginForm
 					onChangeInput={this.onChangeInput}
 					onSubmitLogin={this.onSubmitLogin}
+					loading={loading}
 				/>
 			</div>
 		)

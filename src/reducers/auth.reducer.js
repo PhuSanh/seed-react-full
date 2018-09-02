@@ -4,11 +4,7 @@ const user = localStorage.getItem("user");
 
 let initialState = {
 	isLoggedIn: user !== null,
-	user: {
-		id: 1,
-		username: "",
-		role_id: 1
-	}
+	user: user !== null ? JSON.parse(user) : {}
 }; // String, Array, Object,...
 
 const auth = (state = initialState, action) => {

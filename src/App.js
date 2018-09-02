@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 're
 import ProductListContainer from './containers/Product/ProductListContainer';
 import routes from './routes';
 
-import SidebarContainer from "./containers/Sidebar";
-import HeadbarContainer from "./containers/Headbar";
+import SidebarContainer from "./containers/SidebarContainer";
+import HeadbarContainer from "./containers/HeadbarContainer";
 import { connect } from "react-redux";
 import LoginPage from './pages/LoginPage';
 
@@ -33,7 +33,6 @@ class App extends Component {
 
 	render() {
 		const { sidebar, auth, location } = this.props;
-		console.log(auth.isLoggedIn);
 		if(!auth.isLoggedIn && location.pathname !== "/login") {
 			return (<Redirect to="/login" />)
 		}

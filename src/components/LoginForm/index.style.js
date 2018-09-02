@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Paper, Avatar, Button } from "@material-ui/core";
+import { Paper, Avatar, Button, CircularProgress } from "@material-ui/core";
 
 export const WrapForm = styled(Paper)`
 	position: absolute;
@@ -24,4 +24,16 @@ export const LoginButton = styled(Button)`
 	&& {
 		margin-top: 20px;
 	}
+`;
+
+export const WrapSubmitButton = styled.div`
+	position: relative;
+`;
+
+export const LoadingSubmit = styled(CircularProgress)`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	marginTop: -12;
+	marginLeft: -12;
 `;

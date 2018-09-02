@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
+import screenfull from "screenfull";
 
-import MainMenu from "../../components/MainMenu";
-import UserAvatar from "../../components/UserAvatar";
-import style from "./style.css";
 import { toggleSidebar } from "../../actions/sidebar.action";
+import Headbar from "../../components/Headbar";
 
-class SidebarContainer extends Component {
+class HeadbarContainer extends Component {
 
 	onToggleSidebar = () => {
 		this.props.toggleSidebar();
+	}
+
+	fullScreen = () => {
+		screenfull.toggle();
 	}
 
 	render () {
@@ -18,11 +21,11 @@ class SidebarContainer extends Component {
 		const { sidebar } = this.props;
 
 		return (
-			<div id="sidebar" className={sidebar.isShow ? "show" : "hide"}>
-				<UserAvatar />
-				{/* Menu */}
-				<MainMenu />
-			</div>
+			<Headbar
+				isShowSidebar={sidebar.isShow}
+				onToggleSidebar={this.onToggleSidebar}
+				onFullScreen={this.fullScreen}
+			/>
 		)
 	}
 }
@@ -41,4 +44,4 @@ const mapDispatchToProps = (dispatch, props) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SidebarContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HeadbarContainer);

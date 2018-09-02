@@ -2,12 +2,12 @@ import React from "react";
 import LockIcon from '@material-ui/icons/LockOutlined';
 import { Typography, FormControl, InputLabel, Input } from '@material-ui/core';
 
-import { WrapForm, CompanyLogo, LoginButton } from "./index.style";
+import { WrapForm, CompanyLogo, LoginButton, WrapSubmitButton, LoadingSubmit } from "./index.style";
 import { t } from "../../utils/translate";
 
 const LoginForm = props => {
 
-	const { onChangeInput, onSubmitLogin } = props;
+	const { onChangeInput, onSubmitLogin, loading } = props;
 
 	return (
 		<WrapForm>
@@ -32,14 +32,18 @@ const LoginForm = props => {
 						autoComplete="current-password"
 					/>
 				</FormControl>
-				<LoginButton
-					type="submit"
-					fullWidth
-					variant="raised"
-					color="primary"
-				>
-					{ t("sign_in") }
-				</LoginButton>
+				<WrapSubmitButton>
+					<LoginButton
+						type="submit"
+						fullWidth
+						variant="raised"
+						color="primary"
+						disabled={loading}
+					>
+						{ t("sign_in") }
+					</LoginButton>
+					{loading && <LoadingSubmit size={24} />}
+				</WrapSubmitButton>
 			</form>
 		</WrapForm>
 	);

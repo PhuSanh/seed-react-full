@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Link, NavLink } from 'react-router-dom';
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
-import style from "./style.css";
+import { ListMainMenu, MenuLi, MenuNavLink, ParentSubMenu, ListSubMenu, SubMenuArrow } from "./index.style";
 
 const SubMenu = ({ subs }) => {
 	return (
-		<ul className="sub-menu">
+		<ListSubMenu className="sub-menu">
 			{ subs.map(sub => {
 				return (
 					<MenuLink
@@ -16,29 +14,28 @@ const SubMenu = ({ subs }) => {
 						activeOnlyWhenExact={sub.activeOnlyWhenExact ? true : false} />
 				);
 			})}
-		</ul>
+		</ListSubMenu>
 	);
 }
 
 const MenuLink = ({ label, to, subs, parent, activeParent, onToggleSubMenu, activeOnlyWhenExact = false }) => {
 
 	const active = (parent && activeParent && parent === activeParent) ? "active" : "";
+	let menu;
+	if(to) {
+		menu = (<MenuNavLink to={to}>{ label }</MenuNavLink>);
+	} else {
+		menu = (<ParentSubMenu onClick={() => onToggleSubMenu(parent)}>
+							{ label }
+							<SubMenuArrow className="sub-menu-arrow" />
+						</ParentSubMenu>);
+	}
 
 	return (
-		<li className={`my-li ${active}`}>
-				{ to ? (
-						<NavLink to={to} >
-								{ label }
-						</NavLink>
-					) : (
-						<a onClick={() => onToggleSubMenu(parent)}>
-							{ label }
-							<KeyboardArrowRightIcon className="sub-menu-arrow" />
-						</a>
-					)
-				}
+		<MenuLi className={`my-li ${active}`}>
+				{ menu }
 				{ (subs && subs.length > 0) ? <SubMenu subs={subs} /> : null }
-		</li>
+		</MenuLi>
 	);
 }
 
@@ -74,7 +71,7 @@ class MainMenu extends Component {
 
 	render() {
 		return(
-			<ul id="main-menu">
+			<ListMainMenu id="main-menu">
 				{ menus.map(menu => {
 						return (
 							<MenuLink
@@ -89,7 +86,7 @@ class MainMenu extends Component {
 						)
 				})}
 				{/* This is product list { props.children } */}
-			</ul>
+			</ListMainMenu>
 		);
 	}
 }
